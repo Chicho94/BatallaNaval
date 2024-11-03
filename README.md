@@ -6,10 +6,15 @@ Este proyecto es una implementación de un juego de Batalla Naval en Python, don
 
 ```bash
 # Clona el repositorio
-git clone https://github.com/tu_usuario/batalla-naval.git
+git clone https://github.com/Chicho94/BatallaNaval.git
+```
 
+## Ejecucion
+
+```bash
 # Entra en la carpeta del proyecto
 cd BatallaNaval
 
 # Ejecutar
 py ./BatallaNaval/batalla_naval.py
+```
