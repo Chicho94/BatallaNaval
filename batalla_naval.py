@@ -15,8 +15,8 @@ class BatallaNaval:
   def __assign_piece(self):
     self.__ships = {
         'crucero': {'posiciones': 2, 'icono': 'C', 'hits': 0},
-        # 'submarino':{'posiciones': 3, 'icono': 'S', 'hits': 0},
-        # 'buque':{'posiciones': 4, 'icono': 'B', 'hits': 0}
+        'submarino':{'posiciones': 3, 'icono': 'S', 'hits': 0},
+        'buque':{'posiciones': 4, 'icono': 'B', 'hits': 0}
       }
 
   # Creando tablero de juego
@@ -114,11 +114,17 @@ class BatallaNaval:
 
     # Preparando pieces del tablero del juegador
     for ship, info in self.__ships.items():
-      print(f'Coloca el barco "{ship.upper()}" en tu tablero (ocupara {info["posiciones"]} posiciones)')
-      positions = self.__get_position(info["posiciones"])
+      
+      while True:
+        print(f'Coloca el barco "{ship.upper()}" en tu tablero (ocupara {info["posiciones"]} posiciones)')
+        positions = self.__get_position(info["posiciones"])
 
-      for pos in positions:
-        self.__players[0]['board'][pos[0]][pos[1]] = ship
+        if self.__can_place_ship(self.__players[0]['board'], positions):
+          for pos in positions:
+            self.__players[0]['board'][pos[0]][pos[1]] = ship
+          break
+        else:
+          print(f'El  "{ship.upper()}" no puede colocarse en ese lugar')
 
     print("Tablero Final:")
     for fila in self.__players[0]['board']:
